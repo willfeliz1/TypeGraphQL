@@ -37,6 +37,15 @@ class CategoryResolver {
 
     return updatedCategory;
   }
+
+  @Mutation(() => [Category])
+  async deleteCategory(@Arg("_id") _id: string) {
+    await CategorySchema.findOneAndDelete({ _id });
+
+    const categories = this.categories();
+
+    return categories;
+  }
 }
 
 export default CategoryResolver;
