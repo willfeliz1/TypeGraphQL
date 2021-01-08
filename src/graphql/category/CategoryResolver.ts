@@ -24,6 +24,19 @@ class CategoryResolver {
     const category = await CategorySchema.create(categoryInput);
     return category;
   }
+
+  @Mutation(() => Category)
+  async updateCategory(@Arg("_id") _id: string, @Arg("categoryInput") categoryInput: CategoryInput) { 
+    const updatedCategory = await CategorySchema.findOneAndUpdate({ _id }, categoryInput, {
+      new: true,
+    });
+
+    if(!updatedCategory) {
+      throw new Error('category not found');
+    }
+
+    return updatedCategory;
+  }
 }
 
 export default CategoryResolver;
