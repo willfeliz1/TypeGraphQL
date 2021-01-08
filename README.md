@@ -4,7 +4,7 @@
 
 ## 📕 About
 
-Projeto voltado a estudo da biblioteca TypeGraphQL fazendo consulta e criação de categorias e videos
+Projeto CRUD voltado a estudo da biblioteca TypeGraphQL.  
 
 ## 💻 Installation & play
 
@@ -67,6 +67,39 @@ mutation {
     category: <id_da_categoria_criada>
   }) {
     _id
+  }
+}
+```
+
+* Mutation - Alterar categoria
+
+```sh
+mutation {
+  updateCategory(
+    _id: "<ID_DA_CATEGORIA>"    
+  	categoryInput: {
+      name: "<nome_qualquer>",
+    	description: "<descricao_qualquer>"
+    }
+  ){
+    name,
+    description,
+    _id
+  }
+}
+
+```
+
+* Mutation - Deletar categoria
+
+```sh
+mutation {
+  deleteCategory(
+    _id: "<ID_DA_CATEGORIA>"  
+  ){
+    	name,
+    	description,
+    	_id
   }
 }
 ```
